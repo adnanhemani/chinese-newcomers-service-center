@@ -133,7 +133,6 @@ class ItemsController < ApplicationController
       :client_ssn,
       :date_opened,
       :date_closed,
-      Item.all_fields,
       :document1,
       :document2,
       :document3,
