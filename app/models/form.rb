@@ -1,7 +1,4 @@
-class Item < ActiveRecord::Base
-    has_one :Form_B
-    has_one :Form_K
-    
+class Form < ActiveRecord::Base
     # Mounts paperclip file
     has_attached_file :document1
     has_attached_file :document2
@@ -13,8 +10,28 @@ class Item < ActiveRecord::Base
     validates_attachment :document3, :content_type => {:content_type => %w(image/jpeg image/jpg image/png application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document)}, :size => { :in => 0..10000.kilobytes }
     validates_attachment :document4, :content_type => {:content_type => %w(image/jpeg image/jpg image/png application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document)}, :size => { :in => 0..10000.kilobytes }
     validates_attachment :document5, :content_type => {:content_type => %w(image/jpeg image/jpg image/png application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document)}, :size => { :in => 0..10000.kilobytes }
+
+    def self.fields
+        return []
+    end
+
+    self.fields.each do |field|
+        attr_accessor field
+    end
     
-    def self.all_fields
-        return Form_B.fields + Form_K.fields
+    def self.issue_types
+        return %w()
+    end
+    
+    def self.names
+        return []
+    end
+    
+    def self.headings
+        return []
+    end
+    
+    def self.headings_names_and_fields
+        return []
     end
 end
