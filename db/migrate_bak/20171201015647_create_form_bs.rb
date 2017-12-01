@@ -1,5 +1,11 @@
-class AddFieldsToFormB < ActiveRecord::Migration
+class CreateFormBs < ActiveRecord::Migration
   def change
+    create_table :form_bs do |t|
+      t.references :item, index: true, foreign_key: true
+
+      t.timestamps null: false
+    end
+
     add_column :form_bs, :B_1, :string
     add_column :form_bs, :B_2, :string
     add_column :form_bs, :B_3, :string
