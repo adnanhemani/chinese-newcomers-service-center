@@ -1,5 +1,5 @@
-class Form_K < ActiveRecord::Base
-    belongs_to :Item
+class FormK < ActiveRecord::Base
+    belongs_to :item
 
     def self.fields
         return [:K_1A, :K_1B, :K_1C, :K_1D, :K_1E, :K_2A, :K_2B, :K_2C, :K_2D, 

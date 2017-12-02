@@ -1,6 +1,8 @@
 class Item < ActiveRecord::Base
-    has_one :Form_B
-    has_one :Form_K
+    has_one :form_b
+    has_one :form_k
+    accepts_nested_attributes_for :form_b, allow_destroy: true
+    accepts_nested_attributes_for :form_k, allow_destroy: true
     
     # Mounts paperclip file
     has_attached_file :document1
@@ -15,6 +17,6 @@ class Item < ActiveRecord::Base
     validates_attachment :document5, :content_type => {:content_type => %w(image/jpeg image/jpg image/png application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document)}, :size => { :in => 0..10000.kilobytes }
     
     def self.all_fields
-        return Form_B.fields + Form_K.fields
+        return FormB.fields + FormK.fields
     end
 end

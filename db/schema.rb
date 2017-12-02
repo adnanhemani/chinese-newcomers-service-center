@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130062903) do
+ActiveRecord::Schema.define(version: 20171202052748) do
 
   create_table "form_bs", force: :cascade do |t|
     t.string "B_1"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20171130062903) do
     t.string "B_61"
     t.string "B_62"
     t.string "B_total"
+    t.string "item_id"
   end
 
   create_table "form_ks", force: :cascade do |t|
@@ -128,6 +129,7 @@ ActiveRecord::Schema.define(version: 20171130062903) do
     t.string "K_15B"
     t.string "K_15C"
     t.string "K_15D"
+    t.string "item_id"
   end
 
   create_table "items", force: :cascade do |t|

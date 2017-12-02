@@ -88,6 +88,11 @@ class ItemsController < ApplicationController
     tempCaseId = tempCaseIdBase + format('%03d', idNum)
     @item.update_attributes(case_id: tempCaseId)
     # flash[:notice] = 'Item was successfully created.' + @item[:date_opened].year.to_s
+
+    @item.form_b = FormB.create!(form_b_params)
+    @item.form_k = FormK.create!(form_k_params)
+    @item.save!
+    
     redirect_to items_path
   end
 
@@ -95,12 +100,13 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
-      if @item.update(item_params)
+      if @item.update(item_params) and @item.form_b.update(form_b_params) and @item.form_k.update(form_k_params)
         @item.document1.destroy if params[:remove_document1] == "1"
         @item.document2.destroy if params[:remove_document2] == "1"
         @item.document3.destroy if params[:remove_document3] == "1"
         @item.document4.destroy if params[:remove_document4] == "1"
         @item.document5.destroy if params[:remove_document5] == "1"
+
         format.html {redirect_to items_path, notice: 'Item was successfully updated.'}
         format.json {render :show, status: :ok, location: @item}
       else
@@ -138,6 +144,16 @@ class ItemsController < ApplicationController
       :document3,
       :document4,
       :document5
+      #form_b_attributes: [ FormB.fields ],
+      #form_k_attributes: [ FormK.fields ]
       )
+  end
+  
+  def form_b_params
+      params.require(:form_b).permit(FormB.fields)
+  end
+  
+  def form_k_params
+      params.require(:form_k).permit(FormK.fields)
   end
 end

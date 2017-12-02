@@ -13,16 +13,15 @@
   %br
   = label :item, :date_closed, 'Date Closed'
   = date_select :item, :date_closed, {:include_blank => true}
-
   %br
-  -# Form B
+
   %h1 Form 13424-B Case Issues Report
   
-  - Form_B.headings_names_and_fields.each do |form_b|
-    - field_heading = form_b[0]
-    - field_names = form_b[1]
-    - fields = form_b[2]
-    - field_type = form_b[3]
+  - FormB.headings_names_and_fields.each do |form|
+    - field_heading = form[0]
+    - field_names = form[1]
+    - fields = form[2]
+    - field_type = form[3]
     %h2 #{field_heading}
     
     %table
@@ -30,20 +29,20 @@
         %tr
           - fields.each.with_index do |field, idx|
             - if field_type == "check_box_tag"
-              = check_box_tag field, 1, false, :id => field
-              = label :form_b, field, field_names[idx]
+              = check_box_tag "form_b[#{field}]", 1, false, :id => field 
+              = label :form_b, :field, field_names[idx]
             - if field_type == "text_field"
               = text_field :form_b, field
-              = label :form_b, field, field_names[idx]
+              = label :form_b, :field, field_names[idx]
             %br
             
   %h1 Form 13424-K Case Information Report
   
-  - Form_K.headings_names_and_fields.each do |form_k|
-    - field_heading = form_k[0]
-    - field_names = form_k[1]
-    - fields = form_k[2]
-    - field_type = form_k[3]
+  - FormK.headings_names_and_fields.each do |form|
+    - field_heading = form[0]
+    - field_names = form[1]
+    - fields = form[2]
+    - field_type = form[3]
     %h2 #{field_heading}
     
     %table
@@ -51,15 +50,12 @@
         %tr
           - fields.each.with_index do |field, idx|
             - if field_type == "check_box_tag"
-              = check_box_tag field, 1, false, :id => field
-              = label :form_k, field, field_names[idx]
+              = check_box_tag "form_k[#{field}]", 1, false, :id => field 
+              = label :form_k, :field, field_names[idx]
             - if field_type == "text_field"
               = text_field :form_k, field
-              = label :form_k, field, field_names[idx]
+              = label :form_k, :field, field_names[idx]
             %br
-  
-  
-  
   
   
   %h2 Documents
@@ -77,4 +73,6 @@
   %br
 
   = submit_tag 'Create Item'
+  %br
+  %br
   = link_to 'Back', items_path
