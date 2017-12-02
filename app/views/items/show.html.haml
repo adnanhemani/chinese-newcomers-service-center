@@ -9,11 +9,11 @@
 
   %h1 Form 13424-B Case Issues Report
   
-  - FormB.headings_names_and_fields.each do |form|
-    - field_heading = form[0]
-    - field_names = form[1]
-    - fields = form[2]
-    - field_type = form[3]
+  - Item.b_headings_names_and_fields.each do |form_b|
+    - field_heading = form_b[0]
+    - field_names = form_b[1]
+    - fields = form_b[2]
+    - field_type = form_b[3]
     %h2 #{field_heading}
       
     %table
@@ -21,15 +21,15 @@
         - fields.each.with_index do |field, idx|
           %tr
             %td{:align => "left"} #{field_names[idx]}
-            %td= @item.form_b[field]
+            %td= @item[:field]
 
   %h1 Form 13424-K Case Information Report
   
-  - FormK.headings_names_and_fields.each do |form|
-    - field_heading = form[0]
-    - field_names = form[1]
-    - fields = form[2]
-    - field_type = form[3]
+  - Item.k_headings_names_and_fields.each do |form_k|
+    - field_heading = form_k[0]
+    - field_names = form_k[1]
+    - fields = form_k[2]
+    - field_type = form_k[3]
     %h2 #{field_heading}
     
     %table
@@ -37,7 +37,7 @@
         - fields.each.with_index do |field, idx|
           %tr
             %td{:align => "left"} #{field_names[idx]}
-            %td= @item.form_k[field]
+            %td= @item[field]
       
   %h3 Documents
        

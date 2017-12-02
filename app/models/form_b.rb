@@ -11,9 +11,17 @@ class FormB < ActiveRecord::Base
                 :B_56, :B_57, :B_58, :B_59, :B_60, :B_61, :B_62, :B_total]
     end
     
-    self.fields.each do |field|
-        attr_accessor field
-    end
+    #self.fields.each do |field|
+    #    attr_accessor field
+    #end
+    
+    attr_accessor :B_1, :B_2, :B_3, :B_4, :B_5, :B_6, :B_7, :B_8, :B_9, :B_10, 
+                :B_11, :B_12, :B_13, :B_14, :B_15, :B_16, :B_17, :B_18, :B_19, 
+                :B_20, :B_21, :B_22, :B_23, :B_24, :B_25, :B_26, :B_27, :B_28, 
+                :B_29, :B_30, :B_31, :B_32, :B_33, :B_34, :B_35, :B_36, :B_37, 
+                :B_38, :B_39, :B_40, :B_41, :B_42, :B_43, :B_44, :B_45, :B_46, 
+                :B_47, :B_48, :B_49, :B_50, :B_51, :B_52, :B_53, :B_54, :B_55, 
+                :B_56, :B_57, :B_58, :B_59, :B_60, :B_61, :B_62, :B_total
     
     def self.income_issues
         return ["1. Wages", 

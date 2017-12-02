@@ -16,7 +16,7 @@
   
   %h1 Form 13424-B Case Issues Report
   
-  - FormB.headings_names_and_fields.each do |form_b|
+  - Item.b_headings_names_and_fields.each do |form_b|
     - field_heading = form_b[0]
     - field_names = form_b[1]
     - fields = form_b[2]
@@ -28,16 +28,16 @@
         %tr
           - fields.each.with_index do |field, idx|
             - if field_type == "check_box_tag"
-              = check_box_tag "form_b[#{field}]", 1, @item.form_b[field].eql?(1), :id => field
-              = label :form_b, field, field_names[idx]
+              = check_box_tag "item[#{field}]", 1, @item[field].eql?(1), :id => field
+              = label :item, field, field_names[idx]
             - if field_type == "text_field"
-              = text_field :form_b, field
-              = label :form_b, field, field_names[idx]
+              = text_field :item, field
+              = label :item, field, field_names[idx]
             %br
   
   %h1 Form 13424-K Case Information Report
   
-  - FormK.headings_names_and_fields.each do |form_k|
+  - Item.k_headings_names_and_fields.each do |form_k|
     - field_heading = form_k[0]
     - field_names = form_k[1]
     - fields = form_k[2]
@@ -49,11 +49,11 @@
         %tr
           - fields.each.with_index do |field, idx|
             - if field_type == "check_box_tag"
-              = check_box_tag "form_k[#{field}]", 1, @item.form_k[field].eql?(1), :id => field
-              = label :form_k, field, field_names[idx]
+              = check_box_tag "item[#{field}]", 1, @item[field].eql?(1), :id => field
+              = label :item, field, field_names[idx]
             - if field_type == "text_field"
-              = text_field :form_k, field
-              = label :form_k, field, field_names[idx]
+              = text_field :item, field
+              = label :item, field, field_names[idx]
             %br
   
   %h2 Documents

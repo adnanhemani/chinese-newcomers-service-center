@@ -100,10 +100,7 @@ class ItemsController < ApplicationController
     tempCaseId = tempCaseIdBase + format('%03d', idNum)
     @item.update_attributes(case_id: tempCaseId)
     # flash[:notice] = 'Item was successfully created.' + @item[:date_opened].year.to_s
-
-    @item.form_b = FormB.create!(form_b_params)
-    @item.form_k = FormK.create!(form_k_params)
-    @item.save!
+    flash[:notice] = item_params
     
     redirect_to items_path
   end
@@ -155,9 +152,8 @@ class ItemsController < ApplicationController
       :document2,
       :document3,
       :document4,
-      :document5
-      #form_b_attributes: [ FormB.fields ],
-      #form_k_attributes: [ FormK.fields ]
+      :document5,
+      Item.fields
       )
   end
   
