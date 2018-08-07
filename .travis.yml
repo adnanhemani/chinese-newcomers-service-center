@@ -4,7 +4,7 @@ env:
   global:
     - CC_TEST_REPORTER_ID=5f92d9ca149846108afd4550ea202176b175c6bc82f646342f672993f824fe02
 rvm:
-    - 2.3.1
+    - 2.4.0
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
